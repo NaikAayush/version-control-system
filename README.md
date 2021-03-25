@@ -18,18 +18,21 @@ The use cases planned to be implemented are
 Use Case Diagrams
 
 1. Create Repository
+
    Activity Diagram
    ![Activity Diagram](diagrams/use-case/create-repo-activity.png)
    Activity Diagram
    ![Sequence Diagram](diagrams/use-case/create-repo-sequence.png)
 
 2. Push/Pull Requests
+
    Activity Diagram
    ![Activity Diagram](diagrams/use-case/push-pull-history-activity.png)
    Sequence Diagram
    ![Sequence Diagram](diagrams/use-case/push-pull-history-sequence.png)
 
 3. View Version History
+
    Activity Diagram
    ![Activity Diagram](diagrams/use-case/version-history-activity.png)
    Sequence Diagram
