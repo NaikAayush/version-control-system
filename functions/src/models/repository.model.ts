@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 export class Repository {
   public name: String;
   public description!: String;
@@ -6,14 +7,16 @@ export class Repository {
   public visibility: String;
   public ownerId: String;
   public ownerName: String;
+  public commitNo!: Number;
+  public files!: Object;
 
   constructor(
-    name: String,
-    visibility: String,
-    ownerId: String,
-    ownerName: String,
-    description?: String,
-    createTimeStamp?: any
+      name: String,
+      visibility: String,
+      ownerId: String,
+      ownerName: String,
+      description?: String,
+      createTimeStamp?: any
   ) {
     this.name = name;
     this.visibility = visibility;
@@ -31,12 +34,15 @@ export class Repository {
     if (createTimeStamp) {
       this.createTimeStamp = createTimeStamp;
     }
+    this.commitNo = 0;
+    this.files = [];
   }
   createUrl(ownerName: String, repoName: String) {
     const bucketUrl =
       "https://console.cloud.google.com/storage/browser/version-control-system-ooad.appspot.com/version-control-system-ooad.appspot.com";
     this.url = bucketUrl + "/" + ownerName + "/" + repoName;
   }
+
   toJSON() {
     return {
       name: this.name,
@@ -45,6 +51,8 @@ export class Repository {
       ownerName: this.ownerName,
       description: this.description,
       createTimeStamp: this.createTimeStamp,
+      commitNo: this.commitNo,
+      files: this.files,
     };
   }
 }

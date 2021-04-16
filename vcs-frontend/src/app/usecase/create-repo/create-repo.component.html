@@ -1,0 +1,37 @@
+<div class="wrapper">
+  <h1>Create Repo</h1>
+  <h2>UserName - {{ ownerName }}</h2>
+  <form [formGroup]="repoForm" (ngSubmit)="onSubmit()">
+    <mat-form-field class="example-full-width">
+      <mat-label>Repository Name</mat-label>
+      <input
+        matInput
+        placeholder="Ex. upgraded-broccoli"
+        formControlName="repoName"
+        (focusout)="checkRepoName($event)"
+      />
+    </mat-form-field>
+
+    <p [ngStyle]="{ color: getColor(message) }">
+      {{ message }}
+    </p>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Description (optional)</mat-label>
+      <input formControlName="repoDescription" matInput placeholder="" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Visibility</mat-label>
+      <mat-select formControlName="visibility">
+        <mat-option *ngFor="let i of visibility" [value]="i.value">
+          {{ i.value }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button [disabled]="!valid" color="primary" type="submit">
+      CREATE
+    </button>
+  </form>
+</div>

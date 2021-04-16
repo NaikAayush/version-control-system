@@ -1,0 +1,10 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+:host {
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+}
+.repo {
+  margin: 20px;
+}

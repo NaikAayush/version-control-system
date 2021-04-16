@@ -1,3 +1,4 @@
+/* eslint-disable require-jsdoc */
 export class Message {
   // public response: String;
   public responseCode!: Number;
@@ -9,9 +10,6 @@ export class Message {
     this.message = message;
     this.data = data;
     this.setResponseCode(response);
-
-    if (data) {
-    }
   }
 
   setResponseCode(response: String) {

@@ -1,0 +1,18 @@
+<div class="wrapper">
+  <h2>{{ uname }}/{{ rname }}</h2>
+  <ul *ngIf="flag">
+    <li *ngFor="let item of fileData.data.data">
+      <a href="{{ item.link }}">
+        {{ item.fileName }}
+      </a>
+      <p>Last Modified {{ math.round((date - item.time) / 60) }} minutes ago</p>
+    </li>
+  </ul>
+  <button
+    mat-raised-button
+    color="warn"
+    routerLink="{{ '/' + uname + '/repository/upload/' + rname }}"
+  >
+    UPLOAD FILES
+  </button>
+</div>

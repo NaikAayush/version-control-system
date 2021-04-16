@@ -1,0 +1,10 @@
+<div class="wrapper">
+  <h2>Username - {{ uname }}</h2>
+  <h2>Repositories</h2>
+  <ul *ngFor="let i of data">
+    <li class="listItem">
+      <a href="{{ uname + '/repository' + '/pull/' + i.id }}">{{ i.id }}</a>
+      {{ i.data.visibility }}
+    </li>
+  </ul>
+</div>

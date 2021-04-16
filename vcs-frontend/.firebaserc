@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "version-control-system-ooad": {
+      "hosting": {
+        "vcs-frontend": [
+          "version-control-system-ooad"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "version-control-system-ooad"
+  }
+}
