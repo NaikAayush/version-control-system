@@ -59,4 +59,10 @@ export class ApiService {
       .get<Message>(environment.apiUrl + 'repoFiles/' + uname + '/' + rname)
       .toPromise();
   }
+
+  async getHistory(uname: String, rname: String) {
+    return await this.http
+      .get<Message>(environment.apiUrl + 'repoHistory/' + uname + '/' + rname)
+      .toPromise();
+  }
 }

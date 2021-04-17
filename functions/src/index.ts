@@ -236,7 +236,7 @@ app.get("/repoFiles/:uname/:rname", async (req, res) => {
 
   await Promise.all(
       files.map(async function(value: String) {
-        for (let i = 0; i <= commitNo; i++) {
+        for (let i = commitNo; i > 0; i--) {
           const repoCommitRef = db
               .collection("repository")
               .doc(uname)
@@ -282,6 +282,62 @@ app.get("/repoFiles/:uname/:rname", async (req, res) => {
   // eslint-disable-next-line no-constant-condition
   if (true) {
     message = "Repo Files Retrieved Successfully";
+    response = new Message("OK", message, {
+      data: finalData,
+    });
+  } else {
+    message = "Could not retrieve Repo Files";
+    response = new Message("ERROR", message, {
+      data: finalData,
+    });
+  }
+
+  return res.send(response);
+});
+
+app.get("/repoHistory/:uname/:rname", async (req, res) => {
+  const uname = req.params.uname;
+  const rname = req.params.rname;
+  const repoRef = db
+      .collection("repository")
+      .doc(uname)
+      .collection("repo")
+      .doc(rname);
+  const doc = await repoRef.get();
+  const data: any = doc.data();
+  const commitNo = data.commitNo;
+  // eslint-disable-next-line max-len
+  const finalData: { commitNo:String, fileName: String; link: any; time: any }[] = [];
+
+  for (let i = 0; i <=commitNo; i++) {
+    const repoCommitRef = db
+        .collection("repository")
+        .doc(uname)
+        .collection("repo")
+        .doc(rname)
+        .collection("commit" + i);
+    console.log("Block statement execution no." + i);
+
+    const snapshot = await repoCommitRef.get();
+
+    snapshot.forEach((doc) => {
+      finalData.push({
+        commitNo: "commit"+i,
+        fileName: doc.id,
+        link: doc.data().downloadURL,
+        time: doc.data().time._seconds,
+      });
+    });
+  }
+  console.log(finalData);
+  console.log(typeof finalData);
+
+  let message = "";
+  let response: Message;
+
+  // eslint-disable-next-line no-constant-condition
+  if (true) {
+    message = "Repo History Retrieved Successfully";
     response = new Message("OK", message, {
       data: finalData,
     });

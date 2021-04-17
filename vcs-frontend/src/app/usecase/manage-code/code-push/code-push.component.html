@@ -1,6 +1,14 @@
 <div class="wrapper">
   <h2>Upload Code</h2>
   <h2>{{ uname }}/{{ rname }}</h2>
+
+  <button
+    mat-raised-button
+    color="primary"
+    routerLink="{{ '/' + uname + '/repository/pull/' + rname }}"
+  >
+    VIEW FILES
+  </button>
   <div
     class="dropzone"
     dropzone

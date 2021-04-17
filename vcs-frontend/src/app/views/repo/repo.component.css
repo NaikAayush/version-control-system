@@ -1,0 +1,15 @@
+.wrapper {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+.mat-card{
+    margin: 30px;
+    width: 40em;
+}
+button{
+    margin:10px
+}

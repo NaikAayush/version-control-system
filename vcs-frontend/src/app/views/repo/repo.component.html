@@ -1,3 +1,21 @@
-<p>repo works!</p>
-{{ rname }}
-<button mat-raised-button color="primary">UPLOAD FILES</button>
+<div class="wrapper">
+<h2>Repository History</h2>
+<h2>{{ uname }}/{{ rname }}</h2>
+<button mat-raised-button color="primary" routerLink="{{ '/' + uname + '/repository/upload/' + rname }}">UPLOAD FILES</button>
+<button
+    mat-raised-button
+    color="primary"
+    routerLink="{{ '/' + uname + '/repository/pull/' + rname }}"
+  >
+    VIEW FILES
+  </button>
+<div *ngIf="flag">
+<div *ngFor="let i of data.data.data">
+    <mat-card>
+    <h4>{{i.commitNo}}</h4>
+    <a href={{i.link}}>{{i.fileName}}</a>
+    <p>Last Modified {{ math.round((date - i.time) / 60) }} minutes ago</p>
+</mat-card>
+</div>
+</div>
+</div>
